@@ -25,28 +25,30 @@ export async function proxy(request: NextRequest) {
     }
   );
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
+  const { pathname } = request.nextUrl;
 
-  // /admin/login은 인증 없이 접근 허용
-  if (request.nextUrl.pathname === "/admin/login") {
-    if (user) {
-      return NextResponse.redirect(new URL("/admin", request.url));
-    }
+  // ── 관리자 영역 ──────────────────────────────────────
+  if (pathname === "/admin/login") {
+    if (user) return NextResponse.redirect(new URL("/admin", request.url));
     return supabaseResponse;
   }
+  if (pathname.startsWith("/admin")) {
+    if (!user) return NextResponse.redirect(new URL("/admin/login", request.url));
+  }
 
-  // /admin/* 경로는 로그인 필요
-  if (request.nextUrl.pathname.startsWith("/admin")) {
-    if (!user) {
-      return NextResponse.redirect(new URL("/admin/login", request.url));
-    }
+  // ── 인트라넷 영역 ─────────────────────────────────────
+  if (pathname === "/intranet/login") {
+    if (user) return NextResponse.redirect(new URL("/intranet/dashboard", request.url));
+    return supabaseResponse;
+  }
+  if (pathname.startsWith("/intranet")) {
+    if (!user) return NextResponse.redirect(new URL("/intranet/login", request.url));
   }
 
   return supabaseResponse;
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/intranet/:path*"],
 };

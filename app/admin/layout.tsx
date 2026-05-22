@@ -5,15 +5,15 @@ import { useRouter, usePathname } from "next/navigation";
 import { supabase } from "../lib/supabase/client";
 
 const NAV_ITEMS = [
-  { href: "/admin", label: "대시보드", icon: "▦" },
+  { href: "/admin",              label: "대시보드",   icon: "▦" },
   { href: "/admin/missionaries", label: "선교사 관리", icon: "✦" },
-  { href: "/admin/applications", label: "신청 관리", icon: "✉" },
-  { href: "/admin/news", label: "소식 관리", icon: "📰" },
-  { href: "/admin/contacts", label: "문의 관리", icon: "💬" },
-  { href: "/admin/documents", label: "문서 관리", icon: "📄" },
-  { href: "/admin/reports", label: "보고서 관리", icon: "📊" },
-  { href: "/admin/donations", label: "후원 통계", icon: "💛" },
-  { href: "/admin/users", label: "사용자 관리", icon: "👤" },
+  { href: "/admin/notices",      label: "공지사항",   icon: "📢" },
+  { href: "/admin/applications", label: "신청 관리",  icon: "✉" },
+  { href: "/admin/reports",      label: "보고서 관리", icon: "📊" },
+  { href: "/admin/news",         label: "소식 관리",  icon: "📰" },
+  { href: "/admin/documents",    label: "문서 관리",  icon: "📄" },
+  { href: "/admin/donations",    label: "후원 통계",  icon: "💛" },
+  { href: "/admin/users",        label: "사용자 관리", icon: "👤" },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

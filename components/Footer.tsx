@@ -20,12 +20,11 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-blue-200 mb-4">바로가기</h3>
             <ul className="space-y-2 text-sm text-blue-300">
               {[
-                { href: "/about",       label: "선교회 소개" },
-                { href: "/ministry",    label: "사역 소개" },
-                { href: "/missionaries",label: "선교사 소개" },
-                { href: "/news",        label: "소식 / 간증" },
-                { href: "/donate",      label: "후원 안내" },
-                { href: "/contact",     label: "문의하기" },
+                { href: "/about",    label: "선교회 소개" },
+                { href: "/ministry", label: "사역 소개" },
+                { href: "/news",     label: "소식" },
+                { href: "/donate",   label: "후원 안내" },
+                { href: "/intranet", label: "선교사 인트라넷" },
               ].map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className="hover:text-white transition">
@@ -39,14 +38,14 @@ export default function Footer() {
           {/* 연락처 */}
           <div>
             <h3 className="text-sm font-semibold text-blue-200 mb-4">연락처</h3>
-            <ul className="space-y-2 text-sm text-blue-300">
+            <ul className="space-y-3 text-sm text-blue-300">
               <li>
                 <span className="text-blue-400 text-xs">이메일</span><br />
                 <a href="mailto:nibcm.serve@gmail.com" className="hover:text-white transition">
                   nibcm.serve@gmail.com
                 </a>
               </li>
-              <li className="mt-3">
+              <li>
                 <span className="text-blue-400 text-xs">주소</span><br />
                 서울특별시 강남구 역삼로 166,<br />
                 301호 (역삼동, 세현빌딩)

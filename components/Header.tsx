@@ -3,13 +3,11 @@
 import { useState } from "react";
 
 const NAV_LINKS = [
-  { href: "/", label: "홈" },
-  { href: "/about", label: "소개" },
+  { href: "/",         label: "홈" },
+  { href: "/about",    label: "소개" },
   { href: "/ministry", label: "사역" },
-  { href: "/missionaries", label: "선교사" },
-  { href: "/news", label: "소식" },
-  { href: "/donate", label: "후원" },
-  { href: "/contact", label: "문의" },
+  { href: "/news",     label: "소식" },
+  { href: "/donate",   label: "후원" },
 ];
 
 export default function Header() {
@@ -31,6 +29,9 @@ export default function Header() {
               {link.label}
             </a>
           ))}
+          <a href="/intranet" className="text-blue-700 hover:text-blue-900 transition">
+            인트라넷
+          </a>
         </nav>
 
         {/* 데스크탑 CTA */}
@@ -53,7 +54,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* 모바일 드롭다운 메뉴 */}
+      {/* 모바일 드롭다운 */}
       {open && (
         <div className="md:hidden bg-white border-t px-6 py-4 space-y-1">
           {NAV_LINKS.map((link) => (
@@ -61,11 +62,18 @@ export default function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="block py-3 text-sm font-medium text-gray-700 hover:text-blue-900 border-b last:border-0"
+              className="block py-3 text-sm font-medium text-gray-700 hover:text-blue-900 border-b"
             >
               {link.label}
             </a>
           ))}
+          <a
+            href="/intranet"
+            onClick={() => setOpen(false)}
+            className="block py-3 text-sm font-medium text-blue-700 hover:text-blue-900 border-b"
+          >
+            인트라넷 (선교사 로그인)
+          </a>
           <a
             href="/donate"
             onClick={() => setOpen(false)}
